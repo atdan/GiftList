@@ -3,7 +3,9 @@ const { bytesToHex } = require('ethereum-cryptography/utils');
 
 class MerkleTree {
   constructor(leaves) {
+    //  array of leaves as input. The leaves are converted to Buffers and then hashed using the keccak256 function
     this.leaves = leaves.map(Buffer.from).map(keccak256);
+    // The concat() method is a helper function that concatenates two Buffers and then hashes them using the keccak256 function.
     this.concat = (left, right) => keccak256(Buffer.concat([left, right]));
   }
 
